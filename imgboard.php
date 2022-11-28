@@ -380,13 +380,13 @@ function head(&$dat) {
 		if (SHOWTITLETXT == 1) {$titlepart.= '<br />';}
 	}
 	if (SHOWTITLETXT == 1) {
-		$titlepart .= TITLE;
+        $titlepart .= '<strong>'.TITLE.'</strong>';
 	}
 	$dat.='<!doctype html>
 <html lang="'.LANGUAGE.'"><head>
 <meta http-equiv="content-type"  content="text/html;charset=utf-8" />
 <!-- meta HTTP-EQUIV="pragma" CONTENT="no-cache" -->
-<script src="js/style.js"></script>';
+<script src="./js/style.js"></script>';
 	foreach(STYLES as $stylename => $stylefile) {
 		$dat.='<link rel="alternate stylesheet" type="text/css" href="'.$stylefile.'" title="'.$stylename.'" />';
 	}
@@ -398,12 +398,12 @@ function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {fo
 	if (OEKAKI_ENABLED) {$dat.='<script src="js/ritare/jscolor/jscolor.min.js"></script><script src="js/ritare/ritare.js"></script><link rel="stylesheet" type="text/css" href="js/ritare/ritare.css" />';}
 	$dat.='</head>
 	<body>
-	<div class="styles"><select>
+<!--	<div class="styles"><select>
 	<option disabled selected value>---</option>';
 	foreach(STYLES as $stylename => $stylefile) {
 		$dat.='<option onClick="changeStyle(\''.$stylename.'\')">'.$stylename.'</option> ';
 	}
-	$dat.='</select></div>
+	$dat.='</select></div>-->
 	<div class="adminbar">
 	[<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
 <!--	[<a href="'.PHP_SELF.'?mode=catalog">'.S_CATALOGBUTTON.'</a>]-->
@@ -464,7 +464,6 @@ function fakefoot() {
 function foot(&$dat) {
 	$dat.="
 <div class=\"footer\">".S_FOOT."<br />
-Fikaba".S_VERSION.VERSION."<br />
 ".FOOTTEXT."
 </div>
 </body></html>\n";
