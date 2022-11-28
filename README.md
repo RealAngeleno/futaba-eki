@@ -1,12 +1,11 @@
-# Fikaba
-Fikaba is an imageboard engine forked from Futallaby aiming to be more standards-compatible, readable, usable, and generally an updated version of Futallaby, since Futallaby has become abandonware.
+# Futaba-eki
+Futaba-eki is an imageboard engine forked from Fikaba meant to look visually the same to the original futaba script.
 
 [See here for info on migrating from Futallaby](https://github.com/knarka/fikaba/blob/master/docs/migrate.md)
 
-## Instances
-Below are some examples of sites running Fikaba. If you are using Fikaba and want to be added to the list, please make a pull request or otherwise contact me to add your site to the list below.
+The name 双葉駅 (commonly romanized as futaba-eki) is a reference to futaba station. The name itself was chosen due to futallaby's history with 1chan.net.
 
-* ~~[Chanola](http://chanola.netau.net/board/)~~ RIP
+(the rest is still straight from fikaba)
 
 ## Features
 * Valid HTML5
