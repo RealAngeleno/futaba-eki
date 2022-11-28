@@ -4,7 +4,7 @@
 # For setup instructions and latest version, please visit:
 # https://github.com/knarka/fikaba
 #
-# Based on GazouBBS, Futaba, and Futallaby
+# Based on GazouBBS, Futaba, Futallaby, and Fikaba
 
 const VERSION = '181008';
 
