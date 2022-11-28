@@ -1,12 +1,12 @@
 <?php
-# Fikaba 190401
+# Futaba-Eki V0.1
 #
 # For setup instructions and latest version, please visit:
-# https://github.com/knarka/fikaba
+# https://github.com/RealAngeleno/futaba-eki
 #
 # Based on GazouBBS, Futaba, Futallaby, and Fikaba
 
-const VERSION = '181008';
+const VERSION = '0.1';
 
 if (!file_exists('config.php')) {
 	include 'strings/en.php';
@@ -406,10 +406,10 @@ function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {fo
 	$dat.='</select></div>
 	<div class="adminbar">
 	[<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
-	[<a href="'.PHP_SELF.'?mode=catalog">'.S_CATALOGBUTTON.'</a>]
+<!--	[<a href="'.PHP_SELF.'?mode=catalog">'.S_CATALOGBUTTON.'</a>]-->
 	[<a href="'.PHP_SELF.'?mode=admin">'.S_ADMIN.'</a>]
 	</div>
-	<div class="logo">'.$titlepart.'</div><hr class="logohr" /><br /><br />';
+	<div class="logo">'.$titlepart.'</div><hr class="logohr" width=90% size=1/><br /><br />';
 }
 /* Contribution form */
 function form(&$dat,$resno,$admin="",$manapost=false) {
@@ -417,26 +417,26 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 	$no=$resno;
 	if ($admin) $msg = "<em>".S_NOTAGS."</em>";
 	else $msg = '';
-
-	$dat.=$msg.'<div class="centered"><div class="postarea">
+    if (!$admin) {
+        if ($resno) {
+            $dat .=$msg .= "[<a href=\"".PHP_SELF2."\">Return</a>]\n <table width='100%'><tr><th bgcolor=#e04000>\n <font color=#FFFFFF>Posting mode: Reply</font>\n </th></tr></table>\n"; }
+    }
+	$dat.=$msg.'<div class=centered><div class="postarea">
 		<form id="postform" action="'.PHP_SELF.'" method="post" enctype="multipart/form-data" style="display: inline-block;">
 		<input type="hidden" name="mode" value="regist" />
 		<input type="hidden" name="MAX_FILE_SIZE" value="'.$maxbyte.'" />';
 	if ($no) {$dat.='<input type="hidden" name="resto" value="'.$no.'" />';}
 	$dat.='<table>';
-	if (!$admin) {
-		if (!$resno) { $dat.='<tr><td class="postblocktitle" colspan=2>'.S_NEWTHREAD.'</td></tr>'; }
-		else { $dat.='<tr><td class="postblocktitle" colspan=2>'.S_POSTING." <a href=\"".PHP_SELF2."\">[".S_RETURN."]</a></td></tr>"; }
-	}
+
 	if (!FORCED_ANON||$admin)
 		$dat.='<tr><td class="postblock">'.S_NAME.'</td><td><input type="text" name="name" value="';
 		if ($manapost) $dat .= $_SESSION['name'];
-		$dat .= '" size="35" /></td></tr>';
+		$dat .= '" size="28" /></td></tr>';
 	if ($admin && $_SESSION['cancap']) {
 		$dat.='<tr><td class="postblock">'.S_CAPCODE.'</td><td><input type="checkbox" name="capcode" value="on" checked="checked" size="35" /> ('.$_SESSION['capcode'].')</td></tr>
 		<tr><td class="postblock">'.S_REPLYTO.'</td><td><input type="text" name="resto" size="35" value="0" /></td></tr>';
 	}
-	$dat.='<tr><td class="postblock">'.S_EMAIL.'</td><td><input type="text" name="email" size="35" /></td></tr>
+	$dat.='<tr><td class="postblock">'.S_EMAIL.'</td><td><input type="text" name="email" size="28" /></td></tr>
 	<tr><td class="postblock">'.S_SUBJECT.'</td><td><input type="text" name="sub" size="35" />
 	<input type="submit" value="'.S_SUBMIT.'" /></td></tr>
 	<tr><td class="postblock">'.S_COMMENT.'</td><td><textarea id="com" name="com" cols="50" rows="4"></textarea></td></tr>';
