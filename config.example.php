@@ -8,8 +8,8 @@ const SHOWTITLETXT = 1;				//Show TITLE at top (1: yes, 0: no)
 const SHOWTITLEIMG = 0;				//Show image at top (0: no, 1: single, 2: rotating)
 const BANNERS = array('title1.png', 'title2.png');	// Banners for SHOWTITLEIMG=2
 const TITLEIMG = 'title.png';			//Title image for SHOWTITLEIMG=1
-const LANGUAGE = 'en';				//Language. Fikaba provides en and ja by default
-const FOOTTEXT = '';				//Extra footer text, for disclaimers and such. Can be left empty
+const LANGUAGE = 'en';				//Language. (en or ja?)
+const FOOTTEXT = '';				//Extra footer text, for disclaimers and such. Can be left empty.
 
 // Database settings
 const POSTTABLE = 'CHANGEME';			//Post table (NOT DATABASE)
@@ -24,7 +24,7 @@ const SQLDB = 'CHANGEME';			//Database used by image board
 const IMG_DIR = 'src/';				//Image directory (needs to be 777)
 const THUMB_DIR = 'thumb/';			//Thumbnail directory (needs to be 777)
 const HOME = '../';				//Site home directory (up one level by default
-const MAX_KB = 2000;				//Maximum upload size in KB
+const MAX_KB = 5000;				//Maximum upload size in KB
 const MAX_W = 250;				//Images exceeding this width will be thumbnailed
 const MAX_H = 250;				//Images exceeding this height will be thumbnailed
 const SWF_ENABLED = false;			//Whether or not upload of Flash files is allowed
@@ -39,31 +39,30 @@ const THUMBBACK = array(255,255,238);		//Thumbnail background for transp. images
 
 // Look and behavior
 const ECHOALL = false;				//Do not write index to file, but echo directly (not very stable, not recommended)
-const PAGE_DEF = 5;				//Threads per page
-const THREADLIMIT = 40;			//Maxium number of entries
-const BUMPLIMIT = 50;				//Maximum topic bumps
-const COLLAPSENUM = 3;				//Number of replies to show in the index
-const TRIPKEY = '#';				//this character is displayed before tripcodes
+const PAGE_DEF = 15;				//Threads per page
+const THREADLIMIT = 150;			//Maxium number of entries
+const BUMPLIMIT = 300;				//Maximum topic bumps
+const COLLAPSENUM = 5;				//Number of replies to show in the index
+const TRIPKEY = '!';				//this character is displayed before tripcodes
 
 // Spam/flood protection
 const RENZOKU = 5;				//Seconds between posts (floodcheck)
 const RENZOKU2 = 10;				//Seconds between image posts (floodcheck)
-const BR_CHECK = 15;				//Max lines per post (0 = no limit)
+const BR_CHECK = 50;				//Max lines per post (0 = no limit)
 const PROXY_CHECK = false;			//Enable proxy check
 const DISP_ID = false;				//Display user IDs
-const FORCED_ANON = false;			//Force anonymous posting (except for managers)
+const FORCED_ANON = false;			//Enable forced anonymity (except for managers)
 const BADSTRING = array();			//Posts containing any of these strings will be discarded (can be a nuisance, use with care)
 const BADFILE = array();			//Files to be discarded (md5 hashes)
 
 // CSS
-const CSSDEFAULT = 'Futaba';			// The name of the stylesheet to be used by default
+const CSSDEFAULT = 'Futaba';			// The name of the stylesheet to use
 const STYLES = array(				// Array containing NAME => FILE of stylesheets
 	"Futaba"	=>	'css/futaba.css',
 	"Burichan"	=>	'css/burichan.css',
 	"Yotsuba"	=>	'css/yotsuba.css',
-	"heavy_ice"	=>	'css/heavy_ice.css'
 );
 
-const FILTERS = array(				// Filters, in the format of IN => OUT
-	"darn"		=>	'd*rn'
+const FILTERS = array(				// Wordfilters, in the format of IN => OUT
+	"soy"		=>	'onions'
 );
