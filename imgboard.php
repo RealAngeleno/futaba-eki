@@ -392,12 +392,8 @@ function head(&$dat) {
 <html lang="'.LANGUAGE.'"><head>
 <meta http-equiv="content-type"  content="text/html;charset=utf-8" />
 <!-- meta HTTP-EQUIV="pragma" CONTENT="no-cache" -->
-<script src="./js/style.js"></script>';
-	foreach(STYLES as $stylename => $stylefile) {
-		$dat.='<link rel="alternate stylesheet" type="text/css" href="'.$stylefile.'" title="'.$stylename.'" />';
-	}
-	$dat.='<script>getUserFav("'.CSSDEFAULT.'");</script>
 <title>'.TITLE.'</title>
+<link rel="stylesheet" type="text/css" href="css/'.CSSNAME.'.css">
 <script><!--
 function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {for(i=0;i<forms.length;i++) {if (forms[i].pwd)with(forms[i]) {if (!pwd.value)pwd.value=P;}if (forms[i].name)with(forms[i]) {if (!name.value)name.value=N;}}}};function getCookie(key, tmp1, tmp2, xx1, xx2, xx3) {tmp1 = " " + document.cookie + ";";xx1 = xx2 = 0;len = tmp1.length;	while (xx1 < len) {xx2 = tmp1.indexOf(";", xx1);tmp2 = tmp1.substring(xx1 + 1, xx2);xx3 = tmp2.indexOf("=");if (tmp2.substring(0, xx3) == key) {return(unescape(tmp2.substring(xx3 + 1, xx2 - xx1 - 1)));}xx1 = xx2 + 1;}return("");}
 //--></script><script>function addref(postid) {document.getElementById("com").value += ">>" + postid + "\n";}</script>';
