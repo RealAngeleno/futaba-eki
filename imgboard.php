@@ -415,7 +415,7 @@ function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {fo
 <!--	[<a href="'.PHP_SELF.'?mode=catalog">'.S_CATALOGBUTTON.'</a>]-->
 	[<a href="'.PHP_SELF.'?mode=admin">'.S_ADMIN.'</a>]
 	</div>
-	<div class="logo">'.$titlepart.'</div><hr class="logohr" width=90% size=1/><br /><br />';
+	<div class="logo">'.$titlepart.'</div><hr class="logohr" width=90% size=1/>';
 }
 /* Contribution form */
 function form(&$dat,$resno,$admin="",$manapost=false) {
