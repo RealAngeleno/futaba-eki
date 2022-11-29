@@ -315,7 +315,7 @@ function updatelog($resno=0) {
 		$prev = $st - PAGE_DEF;
 		$next = $st + PAGE_DEF;
 		// Page processing
-		$dat.="<table><tr>";
+		$dat.="<table align=left border=1><tr>";
 		if ($prev >= 0) {
 			if ($prev==0) {
 				$dat.="<form action=\"".PHP_SELF2."\" method=\"get\"><td>";
@@ -325,11 +325,14 @@ function updatelog($resno=0) {
 			$dat.="<input type=\"submit\" value=\"".S_PREV."\" />";
 			$dat.="</td></form>";
 		}
+        else{
+          $dat.="<td>".S_PREV."</td>";
+        }
 
 		$dat.="<td>";
 		for ($i = 0; $i < $counttree; $i += PAGE_DEF) {
 			if ($i&&!($i%(PAGE_DEF*2))) {$dat.=" ";}
-			if ($st==$i) {$dat.="[".($i/PAGE_DEF)."] ";}
+			if ($st==$i) {$dat.="[<b>".($i/PAGE_DEF)."</b>] ";}
 			else{
 				if ($i==0) {$dat.="[<a href=\"".PHP_SELF2."\">0</a>] ";}
 				else{$dat.="[<a href=\"".($i/PAGE_DEF).PHP_EXT."\">".($i/PAGE_DEF)."</a>] ";}
@@ -342,6 +345,9 @@ function updatelog($resno=0) {
 			$dat.="<input type=\"submit\" value=\"".S_NEXT."\" />";
 			$dat.="</form></td>";
 		}
+        else{
+          $dat.="<td>".S_NEXT."</td>";
+        }
 		$dat.="</tr></table><br class=\"allclear\" />";
 		} else { // in res display mode
 			$dat.="<table></table><br class=\"allclear\" />";
