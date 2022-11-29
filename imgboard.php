@@ -451,7 +451,7 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 <td><input type=file name=upfile size="35">
     [<label><input type=checkbox name=textonly value=on>No File</label>]';
 
-	$dat.='</td></tr><tr><td class="postblock">'.S_DELPASS.'</td><td><input type="password" name="pwd" size="18" maxlength="8" value="" /> '.S_DELEXPL.'</td></tr>
+	$dat.='</td></tr><tr><td class="postblock">'.S_DELPASS.'</td><td><input type="password" name="pwd" size="8" maxlength="8" value="" /> '.S_DELEXPL.'</td></tr>
 <tr><td colspan="2">
 <div class="rules lefted">';
 	if (SWF_ENABLED && WEBM_ENABLED) $dat .= S_RULES_BOTH;
