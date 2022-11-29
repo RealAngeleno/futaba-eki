@@ -56,12 +56,7 @@ const BADSTRING = array();			//Posts containing any of these strings will be dis
 const BADFILE = array();			//Files to be discarded (md5 hashes)
 
 // CSS
-const CSSDEFAULT = 'Futaba';			// The name of the stylesheet to use
-const STYLES = array(				// Array containing NAME => FILE of stylesheets
-	"Futaba"	=>	'css/futaba.css',
-	"Burichan"	=>	'css/burichan.css',
-	"Yotsuba"	=>	'css/yotsuba.css',
-);
+const CSSNAME = 'futaba';			//Name of the css file (excluding .css) you want in /css
 
 const FILTERS = array(				// Wordfilters, in the format of IN => OUT
 	"soy"		=>	'onions'
