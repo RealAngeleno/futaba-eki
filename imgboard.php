@@ -419,7 +419,7 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 	else $msg = '';
     if (!$admin) {
         if ($resno) {
-            $msg .= "[<a href=\"".PHP_SELF2."\">Return</a>]\n <table width='100%'><tr><th bgcolor=#e04000>\n <font color=#FFFFFF>Posting mode: Reply</font>\n </th></tr></table>\n"; }
+            $msg .= "[<a href=\"".PHP_SELF2."\">".S_RETURN."</a>]\n <table width='100%'><tr><th bgcolor=#e04000>\n <font color=#FFFFFF>".S_POSTING."</font>\n </th></tr></table>\n"; }
     }
 	$dat.=$msg.'<div class=centered><div class="postarea">
 		<form id="postform" action="'.PHP_SELF.'" method="post" enctype="multipart/form-data" style="display: inline-block;">
