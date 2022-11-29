@@ -445,7 +445,7 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 	$dat.='<tr><td class="postblock">'.S_EMAIL.'</td><td><input type="text" name="email" size="28" /></td></tr>
 	<tr><td class="postblock">'.S_SUBJECT.'</td><td><input type="text" name="sub" size="35" />
 	<input type="submit" value="'.S_SUBMIT.'" /></td></tr>
-	<tr><td class="postblock">'.S_COMMENT.'</td><td><textarea id="com" name="com" cols="50" rows="4"></textarea></td></tr>';
+	<tr><td class="postblock">'.S_COMMENT.'</td><td><textarea id="com" name="com" cols="48" rows="4"></textarea></td></tr>';
 	if (OEKAKI_ENABLED) {$dat.='<tr><td class="postblock">'.S_OEKAKI.'</td><td id="oekakiparent"><span id="painter" style="display:none;"><script>Ritare.start({parentel:"painter",onFinish:function(e) {newfield=document.createElement("input");newfield.type="hidden";newfield.name="oekaki";newfield.id="oekakifile";newfield.value=(Ritare.canvas.toDataURL(\'image/png\')); document.getElementById("postform").appendChild(newfield);alert(\'Oekaki saved!\');},width:370,height:300});</script></span><p id="oekakistarter" onclick="document.getElementById(\'painter\').style=\'display:auto;\';var el = document.getElementById(\'oekakistarter\');el.parentNode.removeChild(el);var el = document.getElementById(\'filerow\');el.parentNode.removeChild(el)">'.S_OEKAKILOAD.'</p></td></tr>';}
 	$dat.='<tr id="filerow"><td class="postblock">'.S_UPLOADFILE.'</td>
 <td><input type=file name=upfile size="35">
