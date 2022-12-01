@@ -1231,7 +1231,6 @@ function insertban($target,$days,$pubmsg,$privmsg,$bantype,$rmp,$rmallp,$unban) 
 	mysqli_free_result($result);
 
 	if ($pubmsg && !$unban) {
-		$pubmsg = strtoupper($pubmsg);
 		$pubmsg = "<br /><br /><span style=\"color: red; font-weight: bold;\">($pubmsg)</span>";
 		$query="update ".POSTTABLE."
 			set com=concat(com,'$pubmsg')
