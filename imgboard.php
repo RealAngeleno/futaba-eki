@@ -408,7 +408,7 @@ function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {fo
 	$dat.='</select></div>-->
 	<div class="adminbar">
 	[<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
-<!--	[<a href="'.PHP_SELF.'?mode=catalog">'.S_CATALOGBUTTON.'</a>]-->
+	[<a href="'.PHP_SELF.'?mode=catalog">'.S_CATALOGBUTTON.'</a>]
 	[<a href="'.PHP_SELF.'?mode=admin">'.S_ADMIN.'</a>]
 	</div>
 	<div class="logo">'.$titlepart.'</div><hr class="logohr" width=90% size=1/>';
