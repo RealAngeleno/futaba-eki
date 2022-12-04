@@ -408,7 +408,7 @@ function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {fo
 	$dat.='</select></div>-->
 	<div class="adminbar">
 	[<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
-<!--	[<a href="'.PHP_SELF.'?mode=catalog">'.S_CATALOGBUTTON.'</a>] -->
+	[<a href="'.PHP_SELF.'?mode=catalog">'.S_CATALOGBUTTON.'</a>]
 	[<a href="'.PHP_SELF.'?mode=admin">'.S_ADMIN.'</a>]
 	</div>
 	<div class="logo">'.$titlepart.'</div><hr class="logohr" width=90% size=1/>';
@@ -450,10 +450,10 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 	$dat.='</td></tr><tr><td class="postblock">'.S_DELPASS.'</td><td><input type="password" name="pwd" size="8" maxlength="8" value="" /> '.S_DELEXPL.'</td></tr>
 <tr><td colspan="2">
 <div class="rules lefted">';
-	if (SWF_ENABLED && WEBM_ENABLED) $dat .= S_RULES_BOTH;
-	elseif (SWF_ENABLED) $dat .= S_RULES_SWF;
-	elseif (WEBM_ENABLED) $dat .= S_RULES_WEBM;
-	else $dat .= S_RULES;
+	if (SWF_ENABLED && WEBM_ENABLED) $dat .= S_RULES_BOTH. POSTNOTES. '</ul>';
+	elseif (SWF_ENABLED) $dat .= S_RULES_SWF. POSTNOTES. '</ul>';
+	elseif (WEBM_ENABLED) $dat .= S_RULES_WEBM. POSTNOTES. '</ul>';
+	else $dat .= S_RULES. POSTNOTES;
 	$dat.='</div></td></tr></table></form></div></div><hr />';
 }
 
