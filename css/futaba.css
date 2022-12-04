@@ -226,6 +226,11 @@ td {
 	text-align: center;
 	padding-top: 6px;
 }
+.cattable {
+	border-color: #777;
+	border-style: solid;
+	border-width: 1px;
+}
 .catthread {
 	display: inline-block;
 	float: none;
@@ -233,12 +238,12 @@ td {
 	max-height: 180px;
 	width: 160px;
 	height: 180px;
-	border-color: #a64;
-	border-style: solid;
-	border-width: 2px;
+	border-color: #000;
+	border-style: inset;
+	border-width: 1px;
 	text-align: center;
 	font-size: 12px;
-	padding-top: 10px;
+	padding-top: 4px;
 	vertical-align: top;
 	margin: 2px;
 }
