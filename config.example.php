@@ -10,6 +10,7 @@ const BANNERS = array('title1.png', 'title2.png');	// Banners for SHOWTITLEIMG=2
 const TITLEIMG = 'title.png';			//Title image for SHOWTITLEIMG=1
 const LANGUAGE = 'en';				//Language. (en or ja?)
 const FOOTTEXT = '';				//Extra footer text, for disclaimers and such. Can be left empty.
+const POSTNOTES = '';				//Added as <li>Item1</li><li>Item2</li>. Can be left empty.
 
 // Database settings
 const POSTTABLE = 'CHANGEME';			//Post table (NOT DATABASE)
