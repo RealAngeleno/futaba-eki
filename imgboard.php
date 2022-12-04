@@ -1,5 +1,5 @@
 <?php
-# Futaba-Eki V0.1
+# Futaba-Eki V0.2
 #
 # For setup instructions and latest version, please visit:
 # https://github.com/RealAngeleno/futaba-eki
@@ -1317,7 +1317,7 @@ function removeban($ip) {
 function catalog() {
 	$dat = '';
 	head($dat);
-	$dat.="<div class=\"passvalid\">".S_CATALOG." <a href=\"".PHP_SELF2."\">[".S_RETURNS."]</a></div><br />";
+    $dat .= "[<a href=\"".PHP_SELF2."\">".S_RETURN."</a>]\n <table width='100%'><tr><th bgcolor=#0040e0>\n <font color=#FFFFFF>".S_CATALOG."</font>\n </th></tr></table>\n";
 	$dat.="<div class='cattable'>";
 	$i = 0;
 	$result = mysqli_call("select * from ".POSTTABLE." order by root desc");
