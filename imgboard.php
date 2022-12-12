@@ -762,7 +762,7 @@ function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$u
 		if (!$resline=mysqli_call("select * from ".POSTTABLE." where resto=".$resto)) {echo S_SQLFAIL;}
 		$countres=mysqli_num_rows($resline);
 		mysqli_free_result($resline);
-		if (!stristr($email,'sage') && $countres < BUMPLIMIT) {
+		if (!stristr(strToLower($email),'sage') && $countres < BUMPLIMIT) {
 			$query="update ".POSTTABLE." set root=now() where no=$resto"; //age
 			if (!$result=mysqli_call($query)) {echo S_SQLFAIL;}
 		}
