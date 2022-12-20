@@ -19,6 +19,7 @@ const S_COMMENT = 'Comment';                                        //Describes 
 const S_OEKAKI = 'Oekaki';
 const S_OEKAKILOAD = 'Click to load oekaki (don\'t forget to save!)';
 const S_UPLOADFILE = 'File';                                        //Describes file field
+const S_NOFILE = 'No File';					    // Describes the no file button
 
 const S_DELPASS = 'Password';                                        //Describes password field
 const S_DELEXPL = '(Password used for file deletion)';                            //Prints explanation for password box (to the right)
