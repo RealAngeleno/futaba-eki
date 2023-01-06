@@ -5,7 +5,7 @@ Futaba-eki is an imageboard engine forked from Fikaba meant to look visually the
 
 The name 双葉駅 (commonly romanized as futaba-eki) is a reference to futaba station. The name itself was chosen due to futallaby's history with 1chan.net.
 
-(the rest is still straight from fikaba)
+(the rest of this README is still straight from fikaba)
 
 ## Features
 * Valid HTML5
@@ -26,12 +26,6 @@ This guide assumes you have a webserver with PHP (7.0 at least) already installe
 4. Navigate to imgboard.php in your browser
 5. Log in to the default admin account (password REPLACEME) and create a new account. The default one will be automatically removed
 6. Pour yourself some puerh and admire your professional adminship
-
-## Updating
-[See here](https://github.com/knarka/fikaba/blob/master/docs/update.md)
-
-## Contributing
-Contributions are welcome. Github wants me to make a CONTRIBUTING file, but I won't.
 
 ## License
 See the file LICENSE.
