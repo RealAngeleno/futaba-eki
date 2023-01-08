@@ -15,6 +15,7 @@ The name 双葉駅 (commonly romanized as futaba-eki) is a reference to futaba s
 * Highly configurable
 * Post references
 * Oekaki
+* Captcha Support
 * [...and more](https://github.com/knarka/fikaba/blob/master/docs/features.md)
 
 ## Installation
