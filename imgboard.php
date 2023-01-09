@@ -398,6 +398,20 @@ function head(&$dat) {
 function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {for(i=0;i<forms.length;i++) {if (forms[i].pwd)with(forms[i]) {if (!pwd.value)pwd.value=P;}if (forms[i].name)with(forms[i]) {if (!name.value)name.value=N;}}}};function getCookie(key, tmp1, tmp2, xx1, xx2, xx3) {tmp1 = " " + document.cookie + ";";xx1 = xx2 = 0;len = tmp1.length;	while (xx1 < len) {xx2 = tmp1.indexOf(";", xx1);tmp2 = tmp1.substring(xx1 + 1, xx2);xx3 = tmp2.indexOf("=");if (tmp2.substring(0, xx3) == key) {return(unescape(tmp2.substring(xx3 + 1, xx2 - xx1 - 1)));}xx1 = xx2 + 1;}return("");}
 //--></script><script>function addref(postid) {document.getElementById("com").value += ">>" + postid + "\n";}</script>';
 	if (OEKAKI_ENABLED) {$dat.='<script src="js/ritare/jscolor/jscolor.min.js"></script><script src="js/ritare/ritare.js"></script><link rel="stylesheet" type="text/css" href="js/ritare/ritare.css" />';}
+	if (RECAPTCHA_ENABLED) {
+		if (!RECAPTCHASITEKEY) {
+			die("You must set RECAPTCHASITEKEY to your site key. If you do not have one, go to reCAPTCHA's website.");
+		}
+		else {
+			$dat .= "<script src='https://www.google.com/recaptcha/api.js'></script>";
+		}
+	}
+	if (KAPTCHA_ENABLED) {
+		die("Kaptcha is not functional currently. Please set KAPTCHA_ENABLED to \"false\" on your \"config.php.\"");
+	}
+	if (KAPTCHA_ENABLED + RECAPTCHA_ENABLED + TRIVCAPTCHA_ENABLED >= 2) {
+		die("You have more than one captcha mode enabled. Please make sure you have only one type of captcha enabled on your config.php.");
+	}
 	$dat.='</head>
 	<body>
 <!--	<div class="styles"><select>
@@ -442,6 +456,22 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 	<tr><td class="postblock">'.S_SUBJECT.'</td><td><input type="text" name="sub" size="35" />
 	<input type="submit" value="'.S_SUBMIT.'" /></td></tr>
 	<tr><td class="postblock">'.S_COMMENT.'</td><td><textarea id="com" name="com" cols="48" rows="4"></textarea></td></tr>';
+	if (RECAPTCHA_ENABLED) {
+		$dat .= '</td></tr><tr><td class="postblock">'.S_VERIFICATION.'</td><td><p>';
+		$dat .= '<div class="g-recaptcha" data-sitekey="'.RECAPTCHASITEKEY.'" name="g-recaptcha-response"></div>';
+		$dat .= '</p>';
+	}
+	if (TRIVCAPTCHA_ENABLED) {
+		$trivqc = TRIVCAPTCHAQUESTIONS;
+		$random_key = array_rand($trivqc);
+		$_SESSION['trivcaptcha_question'] = $random_key;
+		$_SESSION['trivcaptcha_answer'] = $trivqc[$random_key];
+		$dat .= '</td></tr><tr><td class="postblock">'.S_VERIFICATION.'</td><td><p>';
+		$dat .= '<form method="POST" action="">';
+		$dat .= '<div class="trivcaptcha">' . $random_key . '</div>';
+		$dat .= '<input type="text" name="trivcaptcha_response">';
+		$dat .= '</form>';
+	  }
 	if (OEKAKI_ENABLED) {$dat.='<tr><td class="postblock">'.S_OEKAKI.'</td><td id="oekakiparent"><span id="painter" style="display:none;"><script>Ritare.start({parentel:"painter",onFinish:function(e) {newfield=document.createElement("input");newfield.type="hidden";newfield.name="oekaki";newfield.id="oekakifile";newfield.value=(Ritare.canvas.toDataURL(\'image/png\')); document.getElementById("postform").appendChild(newfield);alert(\'Oekaki saved!\');},width:370,height:300});</script></span><p id="oekakistarter" onclick="document.getElementById(\'painter\').style=\'display:auto;\';var el = document.getElementById(\'oekakistarter\');el.parentNode.removeChild(el);var el = document.getElementById(\'filerow\');el.parentNode.removeChild(el)">'.S_OEKAKILOAD.'</p></td></tr>';}
 	$dat.='<tr id="filerow"><td class="postblock">'.S_UPLOADFILE.'</td>
 <td><input type=file name=upfile size="35">
@@ -497,7 +527,44 @@ function proxy_connect($port) {
 function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$upfile_name,$resto) {
 	global $con,$path,$pwdc,$textonly,$admin;
 
-	if (isbanned($ip)) error(S_BANRENZOKU);
+	if (isbanned($ip)) {
+		error(S_BANRENZOKU);
+	}
+	//Check if the user filled out reCAPTCHA (if enabled).
+	if (RECAPTCHA_ENABLED) {
+		$recaptcharesponse = $_POST['g-recaptcha-response'];
+		$recaptchaurl = 'https://www.google.com/recaptcha/api/siteverify';
+		$recaptchadata = array('secret' => RECAPTCHASECRETKEY, 'response' => $recaptcharesponse);
+		$recaptchaoptions = array(
+			'http' => array(
+				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method'  => 'POST',
+				'content' => http_build_query($recaptchadata),
+			),
+		);
+		$recaptchacontext  = stream_context_create($recaptchaoptions);
+		$recaptcharesult = file_get_contents($recaptchaurl, false, $recaptchacontext);
+		$recaptcharesult = json_decode($recaptcharesult, true);
+	
+		if (!$recaptcharesult['success']) {
+			error(S_RECAPTCHAFAIL);
+		}
+	}
+	//Kaptcha
+	if (KAPTCHA_ENABLED) {
+		//Verify if the user filled out the Kaptcha.
+	}
+
+	//Trivcaptcha
+	if (TRIVCAPTCHA_ENABLED) {
+		$random_key = $_SESSION['trivcaptcha_question'];
+		$correct_answer = $_SESSION['trivcaptcha_answer'];
+		$user_response = strtolower($_POST['trivcaptcha_response']);  // Convert user's response to lowercase
+		if ($user_response !== strtolower($correct_answer)) {  // Convert correct answer to lowercase
+		  error(S_TRIVCAPTCHAFAIL);
+		}
+	  }
+	
 
 	// time
 	$time = time();
