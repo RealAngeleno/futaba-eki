@@ -559,7 +559,7 @@ function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$u
 	if (TRIVCAPTCHA_ENABLED) {
 		$random_key = $_SESSION['trivcaptcha_question'];
 		$correct_answer = $_SESSION['trivcaptcha_answer'];
-		$user_response = strtolower($_POST['trivcaptcha_response']);  // Convert user's response to lowercase
+		$user_response = htmlspecialchars(strtolower($_POST['trivcaptcha_response']));  // Convert user's response to lowercase
 		if ($user_response !== strtolower($correct_answer)) {  // Convert correct answer to lowercase
 		  error(S_TRIVCAPTCHAFAIL);
 		}
