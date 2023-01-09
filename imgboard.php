@@ -6,7 +6,7 @@
 #
 # Based on GazouBBS, Futaba, Futallaby, and Fikaba
 
-const VERSION = '0.1';
+const VERSION = '0.2';
 
 if (!file_exists('config.php')) {
 	include 'strings/en.php';
