@@ -49,7 +49,7 @@ const S_DELKEY = 'Password ';                                        //Prints te
 const S_DELETE = 'Delete';                                        //Defines deletion button's name
 const S_PREV = 'Previous';                                        //Defines previous button
 const S_NEXT = 'Next';                                            //Defines next button
-const S_FOOT = '- <a href="http://php.s3.to/" target="_blank">GazouBBS</a> + <a href="http://www.2chan.net/" target="_blank">futaba</a> + <a href="http://www.1chan.net/futallaby/" target="_blank">futallaby</a> + <a href="https://github.com/knarka/fikaba" target="_blank">fikaba</a> + <a href=https://github.com/RealAngeleno/futaba-eki target="_blank">futaba-eki</a> -'; //Prints footer (Don't remove these, please?)
+const S_FOOT = '- <a href="https://github.com/phpskid/GazouBBS_JP-Mirror" target="_blank">GazouBBS</a> + <a href="http://www.2chan.net/" target="_blank">futaba</a> + <a href="http://www.1chan.net/futallaby/" target="_blank">futallaby</a> + <a href="https://github.com/knarka/fikaba" target="_blank">fikaba</a> + <a href=https://github.com/RealAngeleno/futaba-eki target="_blank">futaba-eki</a> -'; //Prints footer (Don't remove these, please?)
 const S_UPFAIL = 'Error: Upload failed.';                                //Returns error for failed upload (reason: unknown?)
 const S_NOUPLOAD = 'Error: Please check the "No File" box if you were planning on creating a new thread without an image.';
 const S_NOREC = 'Error: Cannot find record.';                                //Returns error when record cannot be found
