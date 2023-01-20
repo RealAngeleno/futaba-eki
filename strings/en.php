@@ -51,7 +51,7 @@ const S_PREV = 'Previous';                                        //Defines prev
 const S_NEXT = 'Next';                                            //Defines next button
 const S_FOOT = '- <a href="http://php.s3.to/" target="_blank">GazouBBS</a> + <a href="http://www.2chan.net/" target="_blank">futaba</a> + <a href="http://www.1chan.net/futallaby/" target="_blank">futallaby</a> + <a href="https://github.com/knarka/fikaba" target="_blank">fikaba</a> + <a href=https://github.com/RealAngeleno/futaba-eki target="_blank">futaba-eki</a> -'; //Prints footer (Don't remove these, please?)
 const S_UPFAIL = 'Error: Upload failed.';                                //Returns error for failed upload (reason: unknown?)
-const S_NOUPLOAD = 'Error: Please check the "No File" box if you were planning on creating a new thread without an image.'
+const S_NOUPLOAD = 'Error: Please check the "No File" box if you were planning on creating a new thread without an image.';
 const S_NOREC = 'Error: Cannot find record.';                                //Returns error when record cannot be found
 const S_SAMEPIC = 'Error: Duplicate md5 checksum detected.';                        //Returns error when a md5 checksum dupe is detected
 const S_TOOBIG = 'This image is too large! Upload something smaller!';
