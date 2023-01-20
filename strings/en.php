@@ -70,6 +70,7 @@ const S_BADHOST = 'Error: Host is banned.';                                //Ret
 const S_PROXY80 = 'Error: Proxy detected on :80.';                            //Returns error for proxy detection on port 80
 const S_PROXY8080 = 'Error: Proxy detected on :8080.';                            //Returns error for proxy detection on port 8080
 const S_RECAPTCHAFAIL = 'Error: You did not fill out the CAPTCHA.';					    // Returns error if reCAPTCHA was not filled out.
+const S_KAPTCHAFAIL = 'Error: You did not fill out the Kaptcha.';			// Returns error if Kaptcha was not filled out.
 const S_TRIVCAPTCHAFAIL = 'Error: You did not properly answer the CAPTCHA.';			// Returns error if TrivCaptcha was not filled out.
 const S_SUN = 'Sun';                                            //Defines abbreviation used for "Sunday"
 const S_MON = 'Mon';                                            //Defines abbreviation used for "Monday"
