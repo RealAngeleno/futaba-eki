@@ -408,6 +408,9 @@ function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {fo
 	}
 	if (KAPTCHA_ENABLED) {
 		die("Kaptcha is not functional currently. Please set KAPTCHA_ENABLED to \"false\" on your \"config.php.\"");
+		if (!KAPTCHAKEY) {
+			die("You must set KAPTCHAKEY to your Kaptcha key. If you do not have one, get one.");
+		}
 	}
 	if (KAPTCHA_ENABLED + RECAPTCHA_ENABLED + TRIVCAPTCHA_ENABLED >= 2) {
 		die("You have more than one captcha mode enabled. Please make sure you have only one type of captcha enabled on your config.php.");
@@ -461,6 +464,16 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 		$dat .= '<div class="g-recaptcha" data-sitekey="'.RECAPTCHASITEKEY.'" name="g-recaptcha-response"></div>';
 		$dat .= '</p>';
 	}
+	if (KAPTCHA_ENABLED) {
+		$dat .= '</td></tr><tr><td class="postblock">'.S_VERIFICATION.'</td><td><p>';
+		$dat .= '<script src="https://sys.kolyma.org/kaptcha/kaptcha.js"></script>
+		<noscript>
+		<input type="hidden" name="_KAPTCHA">
+		<input type="hidden" name="_KAPTCHA_NOJS">
+		<iframe src="https://sys.kolyma.org/kaptcha/kaptcha.php?nojs" style="border:none;width:400px;height:150px"></iframe><br>
+		<input type="text" name="_KAPTCHA_KEY" placeholder="'.KAPTCHAKEY.'"><br>
+	</noscript></p>';
+		}
 	if (TRIVCAPTCHA_ENABLED) {
 		$trivqc = TRIVCAPTCHAQUESTIONS;
 		$random_key = array_rand($trivqc);
