@@ -61,6 +61,7 @@ const RECAPTCHA_ENABLED = false;		//Enable Google's reCAPTCHA.
 const RECAPTCHASITEKEY = "";			//Your site key for reCAPTCHA. MUST be set if reCAPTCHA is enabled.
 const RECAPTCHASECRETKEY = "";			//Your secret key for reCAPTCHA. MUST be set if reCAPTCHA is enabled.
 const KAPTCHA_ENABLED = false;			//Must be set to false. Not functional. For KolymaNET's Kaptcha.
+const KAPTCHAKEY = "";				//Your Kaptcha key. MUST be set if Kaptcha is enabled.
 const TRIVCAPTCHA_ENABLED = false;		//Enables a trivia captcha. This is usually the best way to stop untargeted spam. Requires users to answer a question to post.      
 const TRIVCAPTCHAQUESTIONS = array(		//Questions for Trivcaptcha. Entered as ["question" => "answer", "question 2"...]. Answers are case-insensitive.
 	"What does /b/ stand for on 4chan?" => "Random",
