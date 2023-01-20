@@ -408,6 +408,9 @@ function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {fo
 	}
 	if (KAPTCHA_ENABLED) {
 		die("Kaptcha is not functional currently. Please set KAPTCHA_ENABLED to \"false\" on your \"config.php.\"");
+		if (!file_exists(scripts/kaptcha_client.php)) {
+			die("scripts/kaptcha_client.php does not exist! Please get it from KolymaNET.");
+		}
 		if (!KAPTCHAKEY) {
 			die("You must set KAPTCHAKEY to your Kaptcha key. If you do not have one, get one.");
 		}
@@ -566,6 +569,13 @@ function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$u
 	//Kaptcha
 	if (KAPTCHA_ENABLED) {
 		//Verify if the user filled out the Kaptcha.
+		//Some code copied from kolyma documentation.
+		/*require_once "kaptcha_client.php";
+		if (isset($_POST["_KAPTCHA"])) {
+	if (!kaptcha_validate($_POST["_KAPTCHA_KEY"])) {
+		error(S_KAPTCHAFAIL);
+	} else
+	*/
 	}
 
 	//Trivcaptcha
