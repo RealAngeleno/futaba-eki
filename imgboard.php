@@ -574,7 +574,7 @@ function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$u
 		if (isset($_POST["_KAPTCHA"])) {
 	if (!kaptcha_validate($_POST["_KAPTCHA_KEY"])) {
 		error(S_KAPTCHAFAIL);
-	} else
+	}
 	*/
 	}
 
