@@ -45,6 +45,7 @@ const THREADLIMIT = 150;			//Maxium number of entries
 const BUMPLIMIT = 300;				//Maximum topic bumps
 const COLLAPSENUM = 5;				//Number of replies to show in the index
 const TRIPKEY = '!';				//this character is displayed before tripcodes
+const CUSHIONURL = '';				//URL for a referral cushion. e.g. '//jump.x0.to/' Disabled if empty.
 
 // Spam/flood protection
 const RENZOKU = 5;				//Seconds between posts (floodcheck)
