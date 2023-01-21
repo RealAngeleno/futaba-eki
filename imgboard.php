@@ -532,7 +532,7 @@ function error($mes,$dest='') { /* Basically a fancy die() */
 }
 
 function auto_link($proto) {
-	$proto = preg_replace("#(https?|ftp|news|irc|gopher|telnet|ssh)(://[[:alnum:]\+\$\;\?\.%,!\#~*/:@&=_-]+)#","<a href=\"\\1\\2\" target=\"_blank\">\\1\\2</a>",$proto);
+	$proto = preg_replace("#(https?|ftp|news|irc|gopher|telnet|ssh)(://[[:alnum:]\+\$\;\?\.%,!\#~*/:@&=_-]+)#","<a href=\"".CUSHIONURL."\\1\\2\" target=\"_blank\">\\1\\2</a>",$proto);
 	return $proto;
 }
 
