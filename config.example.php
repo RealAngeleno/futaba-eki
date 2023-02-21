@@ -54,6 +54,7 @@ const BR_CHECK = 50;				//Max lines per post (0 = no limit)
 const PROXY_CHECK = false;			//Enable proxy check
 const DISP_ID = false;				//Display user IDs
 const FORCED_ANON = false;			//Enable forced anonymity (except for managers)
+const BANMOBILE = false;			//Bans mobile users from posting/replying.
 const BADSTRING = array();			//Posts containing any of these strings will be discarded (can be a nuisance, use with care)
 const BADFILE = array();			//Files to be discarded (md5 hashes)
 
