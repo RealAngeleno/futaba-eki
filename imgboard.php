@@ -114,6 +114,12 @@ function humantime($time) {
 	return gmdate("y/m/d",$time+9*60*60)."(".(string)$yd.")".gmdate("H:i",$time+9*60*60);
 }
 
+//Detect Mobile Users
+$agent = $_SERVER['HTTP_USER_AGENT'];
+function mobileDetect($agent) {
+  return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+
 function updatelog($resno=0) {
 	global $path;
 
@@ -548,6 +554,12 @@ function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$u
 	if (isbanned($ip)) {
 		error(S_BANRENZOKU);
 	}
+	
+	//Check if the user is using mobile and block them from posting (if enabled).
+	if (mobileDetect($agent) && BANMOBILE) {
+		error(S_MOBILEBLOCK);
+	}
+	
 	//Check if the user filled out reCAPTCHA (if enabled).
 	if (RECAPTCHA_ENABLED) {
 		$recaptcharesponse = $_POST['g-recaptcha-response'];
