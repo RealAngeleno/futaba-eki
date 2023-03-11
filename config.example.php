@@ -11,6 +11,7 @@ const TITLEIMG = 'title.png';			//Title image for SHOWTITLEIMG=1
 const LANGUAGE = 'en';				//Language. (en or ja?)
 const FOOTTEXT = '';				//Extra footer text, for disclaimers and such. Can be left empty.
 const POSTNOTES = '';				//Added as <li>Item1</li><li>Item2</li>. Can be left empty.
+const SITEURL = 'CHANGEME';	//URL path that the board is running on. Ex. world2ch.net/imgboard/
 
 // Database settings
 const POSTTABLE = 'CHANGEME';			//Post table (NOT DATABASE)
@@ -46,6 +47,7 @@ const BUMPLIMIT = 300;				//Maximum topic bumps
 const COLLAPSENUM = 5;				//Number of replies to show in the index
 const TRIPKEY = '!';				//this character is displayed before tripcodes
 const CUSHIONURL = '';				//URL for a referral cushion. e.g. '//jump.x0.to/' Disabled if empty.
+const IMGOPS_ENABLED = true;		//Enables Imgops Link for images.
 
 // Spam/flood protection
 const RENZOKU = 5;				//Seconds between posts (floodcheck)
