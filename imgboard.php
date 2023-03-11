@@ -199,8 +199,14 @@ function updatelog($resno=0) {
 			$imgsrc = "";
 			if ($ext && $ext == ".swf") {
 				$imgsrc = "<a href=\"".$src."\" target=\"_blank\"><img src=\"file.png\" alt=\"".$fsize." B\" /></a>";
-				$dat.="<span class=\"filesize\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($fsize B, $fname)</span><br />$imgsrc";
-			} elseif ($ext) {
+				if (IMGOPS_ENABLED) {
+                    $dat.="<span class=\"filesize\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($fsize B, $fname)</span><span class=\"imgops\"><a href=\"//imgops.com/".SITEURL."$src\" target=\"_blank\">ImgOps</a></span><br />$imgsrc";
+                }
+                else {
+                    $dat.="<span class=\"filesize\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($fsize B, $fname)</span><br />$imgsrc";
+			    } 
+            }
+            elseif ($ext) {
 				$size = $fsize;//file size displayed in alt text
 				if ($w && $h) {//when there is size...
 					if (@is_file(THUMB_DIR.$tim.'s.jpg')) {
@@ -211,8 +217,13 @@ function updatelog($resno=0) {
 				} else {
 					$imgsrc = "<a href=\"".$src."\" target=\"_blank\"><img src=\"$src\" alt=\"".$size." B\" /></a>";
 				}
-				$dat .= "<span class=\"filesize\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($size B, $fname)</span><br />$imgsrc";
-			}
+                if (IMGOPS_ENABLED) {
+				$dat .= "<span class=\"filesize\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($size B, $fname)</span><span class=\"imgops\"><a href=\"//imgops.com/".SITEURL."$src\" target=\"_blank\">ImgOps</a></span><br />$imgsrc";
+                }
+                else {
+                    $dat .= "<span class=\"filesize\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($size B, $fname)</span><br />$imgsrc";
+                }
+            }
 			if (DISP_ID) {
 				$userid = "ID:$id";
 			} else {
@@ -294,11 +305,20 @@ function updatelog($resno=0) {
 					} else {
 						$imgsrc = "<a href=\"".$src."\" target=\"_blank\"><img src=\"".$src."\" alt=\"".$size." B\" /></a>;br />";
 					}
+                    if (IMGOPS_ENABLED) {
+                        if (@is_file(THUMB_DIR.$tim.'s.jpg')) {
+                            $dat.="<span class=\"filesize commentfile\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($size B, $fname)</span><span class=\"imgops\"><a href=\"//imgops.com/".SITEURL."$src\" target=\"_blank\">ImgOps</a></span> <span class=\"thumbnailmsg\">".S_THUMB."</span><br />$imgsrc";
+                        } else {
+                            $dat.="<span class=\"filesize commentfile\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($size B, $fname)</span><span class=\"imgops\"><a href=\"//imgops.com/".SITEURL."$src\" target=\"_blank\">ImgOps</a></span><br />$imgsrc";
+                        }
+                    }
+                    else {
 					if (@is_file(THUMB_DIR.$tim.'s.jpg')) {
 						$dat.="<span class=\"filesize commentfile\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($size B, $fname)</span> <span class=\"thumbnailmsg\">".S_THUMB."</span><br />$imgsrc";
 					} else {
 						$dat.="<span class=\"filesize commentfile\">".S_PICNAME."<a href=\"$src\" target=\"_blank\">$tim$ext</a> ($size B, $fname)</span><br />$imgsrc";
 					}
+                }
 				}
 				$dat.="<blockquote>$com</blockquote>";
 				$dat.="</td></tr></table>";
