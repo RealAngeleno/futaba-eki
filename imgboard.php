@@ -448,9 +448,9 @@ function l(e) {var P=getCookie("pwdc"),N=getCookie("namec"),i;with(document) {fo
 	<body>
 <!--	<div class="styles"><select>
 	<option disabled selected value>---</option>';
-	foreach(STYLES as $stylename => $stylefile) {
+	/*foreach(STYLES as $stylename => $stylefile) {
 		$dat.='<option onClick="changeStyle(\''.$stylename.'\')">'.$stylename.'</option> ';
-	}
+	}*/
 	$dat.='</select></div>-->
 	<div class="adminbar">
 	[<a href="'.HOME.'" target="_top">'.S_HOME.'</a>]
