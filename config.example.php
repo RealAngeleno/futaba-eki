@@ -14,9 +14,9 @@ const POSTNOTES = '';				//Added as <li>Item1</li><li>Item2</li>. Can be left em
 const SITEURL = 'CHANGEME';	//URL path that the board is running on. Ex. world2ch.net/imgboard/
 
 // Database settings
-const POSTTABLE = 'CHANGEME';			//Post table (NOT DATABASE)
-const BANTABLE = 'CHANGEME';			//Bans table (NOT DATABASE)
-const MANATABLE = 'CHANGEME';			//Manager (admin, mod, janitor) table
+const POSTTABLE = 'posts';			//Post table (NOT DATABASE)
+const BANTABLE = 'bans';			//Bans table (NOT DATABASE)
+const MANATABLE = 'managers';			//Manager (admin, mod, janitor) table
 const SQLHOST = 'localhost';			//MySQL server address, usually localhost
 const SQLUSER = 'CHANGEME';			//MySQL user (must be changed)
 const SQLPASS = 'CHANGEME';			//MySQL user's password (must be changed)
