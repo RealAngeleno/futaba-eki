@@ -521,7 +521,7 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 			$dat.='<form method="post">[<label><input type=checkbox value="textonly" name=textonly value=on>'.S_NOFILE.'</label>]</form>';
 		}
 
-	$dat.='</td></tr><tr><td class="postblock">'.S_DELPASS.'</td><td><input type="password" name="pwd" size="8" maxlength="8" value="" /> '.S_DELEXPL.'</td></tr>
+	$dat.='</td></tr><tr><td class="postblock">'.S_DELPASS.'</td><td><input type="password" name="pwd" size="8" maxlength="8" value="" atocomplete="on"/> '.S_DELEXPL.'</td></tr>
 <tr><td colspan="2">
 <div class="rules lefted">';
 	if (SWF_ENABLED && WEBM_ENABLED) $dat .= S_RULES_BOTH. POSTNOTES. '</ul>';
