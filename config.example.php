@@ -12,6 +12,7 @@ const LANGUAGE = 'en';				//Language. (en or ja?)
 const FOOTTEXT = '';				//Extra footer text, for disclaimers and such. Can be left empty.
 const POSTNOTES = '';				//Added as <li>Item1</li><li>Item2</li>. Can be left empty.
 const SITEURL = 'CHANGEME';	//URL path that the board is running on. Ex. world2ch.net/imgboard/
+const SECURESALT = 'CHANGEME';			//Salt for Secure tripcodes (not yet enabled) and IP address hashing.
 
 // Database settings
 const POSTTABLE = 'posts';			//Post table (NOT DATABASE)
@@ -21,6 +22,7 @@ const SQLHOST = 'localhost';			//MySQL server address, usually localhost
 const SQLUSER = 'CHANGEME';			//MySQL user (must be changed)
 const SQLPASS = 'CHANGEME';			//MySQL user's password (must be changed)
 const SQLDB = 'CHANGEME';			//Database used by image board
+const HASHIPS = false;			//Do not store user IPs and instead a unique hash.
 
 // File-related settings
 const IMG_DIR = 'src/';				//Image directory (needs to be 777)
