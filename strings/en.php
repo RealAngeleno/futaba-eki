@@ -117,9 +117,10 @@ const S_TCREATEF = 'Unable to create table!<br />';                            /
 const S_SQLFAIL = 'Critical SQL problem!<br />';                                //SQL Failure
 const S_BANRENZOKU = 'Error: you are banned. Post discarded. Check on the status of your ban <a href="?mode=banned">here</a>.';    //Error shown to banned user when they try to post
 const S_BANNEDMESSAGE = 'You are banned!';
-const S_NOTBANNED = 'You are not banned. IP: ';
+const S_NOTBANNED = 'You are not banned.';
 const S_BANTIME = 'You were banned on: ';
 const S_BANEXPIRE = 'Your ban expires on: ';
+const S_BANIPADDRESS = 'Your IP address is: ';
 const S_BANSUCCESS = 'User banned';
 const S_UNBANSUCCESS = 'User unbanned';
 const S_MANABANIP = 'IP or post no.: ';
