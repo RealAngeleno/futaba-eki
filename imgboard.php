@@ -571,13 +571,17 @@ function proxy_connect($port) {
 function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$upfile_name,$resto) {
 	global $con,$path,$pwdc,$textonly,$admin;
 
-	if (isbanned($ip)) {
-		error(S_BANRENZOKU);
+	//Check if the user is banned
+	if (HASHIPS) {
+		$ipprep = $_SERVER['REMOTE_ADDR'];
+		$ip = hash('sha256', $ipprep . SECURESALT);
+	} else {
+		$ip = $_SERVER['REMOTE_ADDR'];
 	}
 	
-	//Check if the user is using mobile and block them from posting (if enabled).
-	if (mobileDetect($agent) && BANMOBILE) {
-		error(S_MOBILEBLOCK);
+	// Check if the user is banned
+	if (isbanned($ip) || (HASHIPS && isbanned($_SERVER['REMOTE_ADDR']))) {
+		error(S_BANRENZOKU);
 	}
 	
 	//Check if the user filled out reCAPTCHA (if enabled).
@@ -1412,23 +1416,35 @@ function isbanned($ip) { // check ban, returning true or false
 }
 
 function checkban($ip) {
-	$result = mysqli_call("select * from ".BANTABLE);
-	$banned=false;
-	while ($row=mysqli_fetch_row($result)) {
-		list($bip,$time,$expires,$reason)=$row;
-		if ($ip==$bip) {
-			if ((int)$expires<time()) {
-				removeban($ip);
-				error(S_BANEXPIRED);
-			} else {
-				error(S_BANNEDMESSAGE."<br />".S_BANTIME.humantime($time)."<br />".S_BANEXPIRE.humantime($expires));
-			}
-		}
-	}
-	if (!$banned) {
-		error(S_NOTBANNED . $ip);
-	}
-	mysqli_free_result($result);
+    $result = mysqli_call("select * from ".BANTABLE);
+    $banned = false;
+
+    while ($row = mysqli_fetch_row($result)) {
+        list($bip, $time, $expires, $reason) = $row;
+
+        if ($ip == $bip) {
+            if ((int)$expires < time()) {
+                removeban($ip);
+                error(S_BANEXPIRED);
+            } else {
+                error(S_BANNEDMESSAGE."<br />".S_BANTIME.humantime($time)."<br />".S_BANEXPIRE.humantime($expires)."<br />".S_BANIPADDRESS.filter_var($_SERVER['REMOTE_ADDR']), FILTER_VALIDATE_IP);
+            }
+            $banned = true;
+            break;
+        }
+    }
+
+    if (!$banned && HASHIPS) {
+        $unhashedIP = $_SERVER['REMOTE_ADDR'];
+        if ($unhashedIP == $ip) {
+            error(S_NOTBANNED);
+        }
+        checkban($unhashedIP);
+    } elseif (!$banned) {
+        error(S_NOTBANNED);
+    }
+
+    mysqli_free_result($result);
 }
 
 function removeban($ip) {
@@ -1484,7 +1500,13 @@ function catalog() {
 }
 
 /*-----------Main-------------*/
+if (HASHIPS) {
+	$ipprep = $_SERVER['REMOTE_ADDR'];
+	$ip = hash('sha256', $ipprep . SECURESALT);
+}
+else {
 $ip = $_SERVER['REMOTE_ADDR'];
+}
 if (!isset($mode)) $mode = '';
 switch($mode) {
 case 'regist':
