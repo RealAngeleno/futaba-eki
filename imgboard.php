@@ -822,9 +822,6 @@ function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$u
 	$name=preg_replace("/[\r\n]/", "", $name);
 	$names=$name;
 	$name = trim($name);//blankspace removal
-	if (get_magic_quotes_gpc()) {//magic quotes is deleted (?)
-		$name = stripslashes($name);
-	}
 	$name = htmlspecialchars($name);//remove html special chars
 	$name = str_replace("&amp;", "&", $name);//remove ampersands
 	$name = str_replace(",", "&#44;", $name);//remove commas
@@ -915,7 +912,7 @@ function regist($ip,$name,$capcode,$email,$sub,$com,$oekaki,$url,$pwd,$upfile,$u
 		"'".$tim."',".
 		(int)$time.",".
 		"'".$md5."',".
-		"'".$upfile_name."',".
+		"'".mysqli_escape_string($con, $upfile_name)."',".
 		(int)$fsize.",".
 		$rootqu.",".
 		(int)$resto.",
@@ -1071,15 +1068,12 @@ function md5_of_file($inFile) {
 
 /* text plastic surgery */
 function CleanStr($str) {
-	$str = trim($str);//blankspace removal
-	if (get_magic_quotes_gpc()) {//magic quotes is deleted (?)
-		$str = stripslashes($str);
-	}
-	if (!(isset($_SESSION['cancap']) && ((int)$_SESSION['cancap'])!=0)) {
-		$str = htmlspecialchars($str);//remove html special chars
-		$str = str_replace("&amp;", "&", $str);//remove ampersands
-	}
-	return str_replace(",", "&#44;", $str);//remove commas
+    $str = trim($str); //blankspace removal
+    if (!(isset($_SESSION['cancap']) && ((int)$_SESSION['cancap']) != 0)) {
+        $str = htmlspecialchars($str); //remove html special chars
+        $str = str_replace("&amp;", "&", $str); //remove ampersands
+    }
+    return str_replace(",", "&#44;", $str); //remove commas
 }
 
 //check for table existance
