@@ -1259,7 +1259,6 @@ function admindel() {
             	$delflag = true;
         	}
     	}
-	if 
 	if ($delflag) {
 		if (!$result=mysqli_call("select * from ".POSTTABLE."")) {echo S_SQLFAIL;}
 	$find = false;
