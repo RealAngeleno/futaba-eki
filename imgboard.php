@@ -1253,9 +1253,13 @@ function admindel() {
 	$delno = array();
 	$delflag = false;
 	reset($_POST);
-	while ($item = each($_POST)) {
-		if ($item[1]=='delete') {array_push($delno,$item[0]);$delflag=true;}
-	}
+	foreach ($_POST as $key => $value) {
+        	if ($value == 'delete') {
+            	array_push($delno, $key);
+            	$delflag = true;
+        	}
+    	}
+	if 
 	if ($delflag) {
 		if (!$result=mysqli_call("select * from ".POSTTABLE."")) {echo S_SQLFAIL;}
 	$find = false;
