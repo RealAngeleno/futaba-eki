@@ -476,10 +476,11 @@ function form(&$dat,$resno,$admin="",$manapost=false) {
 	if ($no) {$dat.='<input type="hidden" name="resto" value="'.$no.'" />';}
 	$dat.='<table>';
 
-	if (!FORCED_ANON||$admin)
+	if (!FORCED_ANON||$admin) {
 		$dat.='<tr><td class="postblock">'.S_NAME.'</td><td><input type="text" name="name" value="';
 		if ($manapost) $dat .= $_SESSION['name'];
 		$dat .= '" size="28" /></td></tr>';
+	}
 	if ($admin && $_SESSION['cancap']) {
 		$dat.='<tr><td class="postblock">'.S_CAPCODE.'</td><td><input type="checkbox" name="capcode" value="on" checked="checked" size="35" /> ('.$_SESSION['capcode'].')</td></tr>
 		<tr><td class="postblock">'.S_REPLYTO.'</td><td><input type="text" name="resto" size="35" value="0" /></td></tr>';
